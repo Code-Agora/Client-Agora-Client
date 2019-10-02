@@ -1,14 +1,18 @@
 import React from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import styled from 'styled-components';
 
+const MySideNav = styled(SideNav)`
+    top: 56px;
+    background-color: #222;
+`;
 
 export const Sidebar = () => (
-    <SideNav
+    <MySideNav
         onSelect={(selected) => {
             
         }}
     >
-        <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="home">
                     <NavItem eventKey="home">
                         <NavIcon>
@@ -27,5 +31,5 @@ export const Sidebar = () => (
                         </NavText>
                     </NavItem>
                 </SideNav.Nav>
-            </SideNav>
+    </MySideNav>
 )
