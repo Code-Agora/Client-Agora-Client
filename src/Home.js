@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Button, ButtonGroup } from 'react-bootstrap';
 
 // Used for top most grid layout
 const GridWrapper = styled.div`
     display: grid;
     grid-gap: 10px;
-    margin: 0 auto; /* horizontally centers the columns */
+    margin-top: 1em;
+    margin-left: 5.5em;
+    margin-right: 5.5em; 
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(25px, auto); /* Changes row size in TopRect */
 `;
@@ -14,7 +15,8 @@ const GridWrapper = styled.div`
 // Creates a functional component for us
 export const Home = () => (
     <GridWrapper>
-        
+        <p>This is a paragraph and I am writing on the home page</p>
+        <p>This is another paragraph, hi hey hello whatsup yo</p>
     </GridWrapper>
 )
 
