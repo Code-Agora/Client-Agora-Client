@@ -1,44 +1,55 @@
 import React from "react";
-import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import styled from "styled-components";
 /* Router and Route not used, but have to be here for Sidebar routing to work */
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const MySideNav = styled(SideNav)`
-  top: 56px;
-  background-color: #222;
+/* This defines the actual bar going down the screen */
+const SideNav = styled.div`
+  position: fixed; /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 60px; /* Set the width of the sidebar */
+  z-index: 1; /* Stay on top of everything */
+  top: 3.4em; /* Stay at the top */
+  left: 0;
+  background-color: #222; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 10px;
 `;
 
-/* Inline CSS */
-const IconStyle = {
-  fontSize: "1.75em",
-  /* width and height important, they define size of icon in sidebar. If too small, click will not work */
-  width: "2.6em",
-  height: "2em",
-  /* Some reason icon is default at 1 and it is a little too far up and 2 fixes it */
-  lineHeight: "2",
-  color: "#9FFFCB"
-};
+/* NavItem is container for either both NavIcon and NavText OR just NavIcon */
+const NavItem = styled.div`
+  height: 60px;
+  width: 60px;
+`;
+
+const NavIcon = styled.div`
+  /* Link tag uses anchor, so style a to style Link/icon */
+  a {
+    font-size: 2.75em;
+    color: #9FFFCB;
+    margin-left: 2px;
+  }
+`;
 
 export const Sidebar = () => (
-    <MySideNav onSelect={selected => {}}>
-      <SideNav.Nav defaultSelected="home">
-        {/* Set eventKey in order for icon to appear selected */}
-        <NavItem eventKey="home">
-          <NavIcon>
-            {/* This Link references the router in App.js */}
-            <Link to="/">
-              <i className="fa fa-fw fa-home" style={ IconStyle } />
-            </Link>
-          </NavIcon>
-        </NavItem>
-        <NavItem eventKey="about">
-          <NavIcon>
-            <Link to="/about"> 
-              <i className="far fa-clock" style={ IconStyle }></i>
-            </Link> 
-          </NavIcon>
-        </NavItem>
-      </SideNav.Nav>
-    </MySideNav>
+  <SideNav>
+    <NavItem>
+      <NavIcon>
+        {/*<a href="/" className="fa fa-fw fa-home"></a>*/}
+        <Link to="/" className="fa fa-fw fa-home"></Link>
+      </NavIcon>
+    </NavItem>
+    <NavItem>
+      <NavIcon>
+        {/* Putting fa-icon on NavIcon does not work, but this does */}
+        <Link to="/about" className="fa fa-fw fa-clock"></Link>
+      </NavIcon>
+    </NavItem>
+    <NavItem>
+      <a href="#">Clients</a>
+    </NavItem>
+    <NavItem>
+      <a href="/about">Contact</a>
+    </NavItem>
+  </SideNav>
 );

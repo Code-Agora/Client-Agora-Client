@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import './App.css';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Home } from './Home';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
