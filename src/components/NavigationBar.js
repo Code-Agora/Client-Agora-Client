@@ -1,7 +1,6 @@
 import React from 'react';
-import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap'; // Notice not reactstrap
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'; // Notice not reactstrap
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 // Create styles component to wrap everything in component
 

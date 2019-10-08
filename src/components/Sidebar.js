@@ -1,16 +1,12 @@
 import React from "react";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import styled from "styled-components";
-
-import { BrowserRouter as Link } from "react-router-dom";
+/* Router and Route not used, but have to be here for Sidebar routing to work */
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const MySideNav = styled(SideNav)`
   top: 56px;
   background-color: #222;
-`;
-
-const MyNavText = styled(NavText)`
-  
 `;
 
 /* Inline CSS */
@@ -18,7 +14,10 @@ const IconStyle = {
   fontSize: "1.75em",
   /* width and height important, they define size of icon in sidebar. If too small, click will not work */
   width: "2.6em",
-  height: "2em"
+  height: "2em",
+  /* Some reason icon is default at 1 and it is a little too far up and 2 fixes it */
+  lineHeight: "2",
+  color: "#9FFFCB"
 };
 
 export const Sidebar = () => (
@@ -39,7 +38,6 @@ export const Sidebar = () => (
               <i className="far fa-clock" style={ IconStyle }></i>
             </Link> 
           </NavIcon>
-          {/*<MyNavText>Devices</MyNavText>*/}
         </NavItem>
       </SideNav.Nav>
     </MySideNav>
