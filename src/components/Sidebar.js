@@ -2,42 +2,45 @@ import React from "react";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import styled from "styled-components";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Home } from "../Home";
+import { BrowserRouter as Link } from "react-router-dom";
 
 const MySideNav = styled(SideNav)`
   top: 56px;
   background-color: #222;
 `;
 
+const MyNavText = styled(NavText)`
+  
+`;
+
 /* Inline CSS */
 const IconStyle = {
-  fontSize: "1.75em"
+  fontSize: "1.75em",
+  /* width and height important, they define size of icon in sidebar. If too small, click will not work */
+  width: "2.6em",
+  height: "2em"
 };
 
 export const Sidebar = () => (
-  <Router>
     <MySideNav onSelect={selected => {}}>
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="">
-          {/*I made this eventKey blank because it is required, but not used*/}
+        {/* Set eventKey in order for icon to appear selected */}
+        <NavItem eventKey="home">
           <NavIcon>
+            {/* This Link references the router in App.js */}
             <Link to="/">
-              {/* This Link refernces the router below */}
-              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+              <i className="fa fa-fw fa-home" style={ IconStyle } />
             </Link>
           </NavIcon>
         </NavItem>
-        <NavItem eventKey="clock">
+        <NavItem eventKey="about">
           <NavIcon>
-            <i className="far fa-clock" style={IconStyle}></i>
+            <Link to="/about"> 
+              <i className="far fa-clock" style={ IconStyle }></i>
+            </Link> 
           </NavIcon>
-          <NavText>Devices</NavText>
+          {/*<MyNavText>Devices</MyNavText>*/}
         </NavItem>
       </SideNav.Nav>
     </MySideNav>
-
-    {/* Routes */}
-    <Route exact path="/" component={Home} />
-  </Router>
 );
