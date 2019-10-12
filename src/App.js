@@ -5,7 +5,7 @@ import { Home } from './Home';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
 import { NavigationBar } from './components/NavigationBar';
-import { Sidebar } from './components/Sidebar';
+import Sidebar from './components/Sidebar'; // A default import. Using { } means named import
 
 function App() {
   return (
