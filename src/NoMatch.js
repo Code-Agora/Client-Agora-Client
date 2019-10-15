@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     margin-top: 1em;
-    margin-left: 5.5em;
-    margin-right: 5.5em; 
+    margin-left: 6em;
+    margin-right: 6em; 
 `;
 
 // Creates a functional component for us
