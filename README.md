@@ -6,8 +6,12 @@ In the project directory, you can run:
 
 ### `npm start`
 
+<<<<<<< HEAD
 NOTE FROM JOSH: First do "npm install"
 ALSO: install "npm i react-bootstrap"
+=======
+NOTE FROM JOSH: Do not forget to do "npm install" to install all dependencies of the project first.
+>>>>>>> 2a1013b2e4691938109471cfa6f218bde9418fea
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
