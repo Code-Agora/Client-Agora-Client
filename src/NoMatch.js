@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { BottomNavbar } from './components/BottomNavbar';
 
 const Wrapper = styled.div`
     margin-top: 1em;
@@ -9,7 +10,10 @@ const Wrapper = styled.div`
 
 // Creates a functional component for us
 export const NoMatch = () => (
-    <Wrapper>
-        <h2>No Match</h2>
-    </Wrapper>
+    <React.Fragment>
+        <BottomNavbar title="No Match" />
+        <Wrapper>
+            <h2>No Match</h2>
+        </Wrapper>
+    </React.Fragment>
 )

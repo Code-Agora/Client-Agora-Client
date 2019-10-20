@@ -1,0 +1,3 @@
+body {
+  overflow-x: hidden; /* This feels kind of hacky, but stops x-scrollbar from appearing */
+}
