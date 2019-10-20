@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { NavigationBar } from './components/NavigationBar';
 import './App.css';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Home } from './Home';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
-import { NavigationBar } from './components/NavigationBar';
-import { Sidebar } from './components/Sidebar';
+import Sidebar from './components/Sidebar'; // A default import. Using { } means named import
 
 function App() {
   return (
