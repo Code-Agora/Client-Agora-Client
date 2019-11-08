@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { NavigationBar } from './components/NavigationBar';
 import './App.css';
 import { Home } from './Home';
-import { About } from './About';
+import { Popular } from './Popular';
 import { NoMatch } from './NoMatch';
 import Sidebar from './components/Sidebar'; // A default import. Using { } means named import
 
@@ -22,7 +22,7 @@ function App() {
         
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/popular" component={Popular} />
           <Route component={NoMatch} />
         </Switch>
         

@@ -18,9 +18,9 @@ const MyCard = styled(Card)`
 `;
 
 // Creates a functional component for us
-export const About = () => (
+export const Popular = () => (
   <React.Fragment>
-    <BottomNavbar title="About" />
+    <BottomNavbar title="Popular" />
     <GridWrapper>
       <MyCard>
         <Card.Body>
