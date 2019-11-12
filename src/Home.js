@@ -46,7 +46,7 @@ class Stats extends React.Component {
           0<br></br>Answers
         </div>
         <div> {/* div for the # of views */}
-          0<br></br>Views
+          { this.props.vs }<br></br>Views
         </div>
       </MainStatsRect>
     );
@@ -93,28 +93,39 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: require("./MOCK_DATA.json"), // Taking in entire array of questions data from JSON
+      data: [], // data holds info on everything basically, question title, user, body, etc
+      //questions: require("./MOCK_DATA.json"), // Taking in entire array of questions data from JSON
       activeSort: 'default', // On start, sort by default (all questions on site if no following)
       options: ['default', 'popular', 'recent'],
-    }
+    };
+  }
+
+  componentDidMount() {
+    // TODO: comment what each of these lines does
+    fetch(`http://localhost:3001/api/questions`)
+      .then(response => response.json())
+      .then(responseJson => {
+        // Set state to contain all questions data
+        this.setState({ data: responseJson.data });
+      });
   }
 
   // Render all of the questions based on information sent from backend
   render() {
-    const { questions } = this.state;
+    const { data } = this.state;
     
     return ( // <Questions> is returning multiple cards (having question data on them)
       // Loop through questions data array
-      questions.map((q) => {
+      data.map((q) => {
         return (
-          <MyCard key={q.key}>
+          <MyCard key={q.id}>
             <Card.Body style={{ width: "70%" }}>
               <Card.Text>
                 { q.title }
               </Card.Text>
             </Card.Body>
             <TagBody></TagBody>
-            <Stats></Stats> {/* Should be all 3 stats (votes, answers, views) */}
+            <Stats vs={ q.view_count }></Stats> {/* Should be all 3 stats (votes, answers, views) */}
           </MyCard>
         )
       }
