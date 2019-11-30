@@ -1,0 +1,22 @@
+.header {
+  position: relative;
+  background-color: #010010;
+  padding: 15px 10px; /* t, r, b, l */
+  overflow: hidden;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.brand {
+  font-size: 25px;
+  font-weight: bold;
+  color: #9FFFCB;
+}
+
+.searchbar {
+  float: none; /* We don't want any */
+  position: absolute; /* Allows to position in center relative to header */
+  top: 50%; /* Moves to center vertically */
+  left: 50%; /* Moves to center horizontally */
+  transform: translate(-50%, -50%); /* WTF why? https://www.w3schools.com/howto/howto_css_topnav_centered.asp */
+  width: 35%; /* Width of search bar */
+}
