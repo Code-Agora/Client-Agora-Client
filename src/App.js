@@ -19,11 +19,11 @@ function App() {
 
         <MainSidebar></MainSidebar>
         
-        {/*<Switch>
+        <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/popular" component={Popular} />
           <Route component={NoMatch} />
-        </Switch>*/}
+        </Switch>
 
       </Router>
     </React.Fragment>

@@ -1,5 +1,5 @@
 .header {
-  position: relative;
+  position: sticky;
   background-color: #010010;
   padding: 15px 10px; /* t, r, b, l */
   overflow: hidden;
