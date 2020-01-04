@@ -18,12 +18,18 @@ function App() {
         <TopHeader></TopHeader>
 
         <MainSidebar></MainSidebar>
-        
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/popular" component={Popular} />
-          <Route component={NoMatch} />
-        </Switch>
+
+        <div className="container">
+          
+          <div className="row">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/popular" component={Popular} />
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+
+        </div>
 
       </Router>
     </React.Fragment>

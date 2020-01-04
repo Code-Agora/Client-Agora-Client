@@ -1,55 +1,72 @@
-.ask {
-  display: block;
-  width: 40em;
-  /* Bottom 2 lines center div inside bootstrap column */
-  float: none;
-  margin: 1.7em auto 0; /* t, r, b, l */
-  border: 1px solid lightgray;
+.infocardcontainer {
+  margin-top: 5em;
 }
 
 .infocard {
-  border: 1px solid lightgray;
+  position: relative;
+  border: 2px solid #9FFFCB;
   border-radius: 1%;
-  width: 40em;
-  height: 16em;
+  width: 50em;
+  height: 10em;
   /* Bottom 2 lines center div inside bootstrap column */
   float: none;
   margin: 0.5em auto 0; /* t, r, b, l */
-  background-color: white;
+  background-color: #010010;
+  color: #9FFFCB;
 }
 
 .infotitle {
   font-weight: bold;
   font-size: large;
-  margin: 2em 1em 0 1em; /* t, r, b, l */
+  margin: 1.4em 10em 0 1em; /* t, r, b, l */
+}
+
+.infotags {
+  position: relative;
+  left: 0; 
+  bottom: 0;
+  margin: 0 0 0 1.2em; /* t, r, b, l */
+  /*border-left: 2px solid #9FFFCB;
+  border-right: 2px solid #9FFFCB;*/
+  color: blue; /* Color of tags */
+  font-size: 14px;
+}
+
+.tag {
+  padding: 0 0 0 0;
+  margin: 0 1em 0 0; /* t, r, b, l */
+}
+
+.tag:hover {
+
 }
 
 .infouser {
-  display: block;
-  margin: 0 1em 0 1em; /* t, r, b, l */
+  padding: 0 0 0 0;
+  margin: 0 0 0 1.4em;
+  font-size: 12px;
 }
 
-.userimg {
-  float: left;
+.mainstatsrect {
+  position: absolute;
+  left: 85%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: left;
+  padding-top: 1.4em; /* Align top border of 3 stats with question title */
+  font-size: 25px;
 }
 
-.userimg img {
-  display: block;
-}
-
-.usertxt p {
-  font-size: small;
-  margin: 0 0 0 3.5em; /* t, r, b, l */
-}
-
-.infotext {
-  margin: 0.5em 0 1em 0; /* t, r, b, l */
+.stat_block span {
+  font-size: 12px;
 }
 
 .sidecard {
-  border: 1px solid lightgray;
+  border: 2px solid #9FFFCB;
   border-radius: 1%;
   width: 15em;
   height: 30em;
-  margin-top: 1.7em;
+  margin-top: 5em;
+  background-color: #010010;
 }
