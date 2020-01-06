@@ -5,8 +5,8 @@ import './App.css';
 import { TopHeader } from './components/TopHeader';
 import { MainSidebar } from './components/MainSidebar';
 import { Home } from './Home';
-import { Popular } from './Popular';
 import { NoMatch } from './NoMatch';
+import { TagsPage } from './TagsPage';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <div className="row">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/popular" component={Popular} />
+              <Route path="/tags" component={TagsPage} />
               <Route component={NoMatch} />
             </Switch>
           </div>
