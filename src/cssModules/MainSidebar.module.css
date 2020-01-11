@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  background-color: #121212;
+  background-color: black;
   margin-top: 58px;  /* Moves below TopHeader */
   padding-top: 10px; /* Moves navitems down a lil bit */
   overflow: hidden;

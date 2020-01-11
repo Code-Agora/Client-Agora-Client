@@ -2,7 +2,7 @@
   position: fixed;
   width: 100%;
   z-index: 5;
-  background-color: #121212;
+  background-color: black;
   padding: 15px 10px; /* t, r, b, l */
   overflow: hidden;
 }

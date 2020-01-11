@@ -5,13 +5,13 @@
 .infocard {
   position: relative;
   border: 2px solid #9FFFCB;
-  border-radius: 2%;
+  border-radius: 1em;
   width: 50em;
   height: 10em;
   /* Bottom 2 lines center div inside bootstrap column */
   float: none;
   margin: 0 0 0.5em 0; /* t, r, b, l */
-  background-color: #121212;
+  background-color: black;
   color: #9FFFCB;
 }
 
@@ -68,5 +68,5 @@
   width: 15em;
   height: 30em;
   margin-top: 5em;
-  background-color: #121212;
+  background-color: black;
 }

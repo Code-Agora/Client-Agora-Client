@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactPaginate from 'react-paginate';
 import styles from './cssModules/Home.module.css'; // Need to put .module for CSS module files
 
 class SideCard extends React.Component {
@@ -15,26 +17,10 @@ class InfoCard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      data: [], // data holds info on everything basically, question title, user, body, etc
-      //questions: require("./MOCK_DATA.json"), // Taking in entire array of questions data from JSON
-      activeSort: 'default', // On start, sort by default (all questions on site if no following)
-      options: ['default', 'popular', 'recent'],
-    };
-  }
-
-  componentDidMount() {
-    // TODO: comment what each of these lines does
-    fetch(`http://localhost:3001/api/questions`)
-      .then(response => response.json())
-      .then(responseJson => {
-        // Set state to contain all questions data
-        this.setState({ data: responseJson.questions.data });
-      });
   }
 
   render() {
-    const { data } = this.state;
+    const { data } = this.props;
 
     return (
 
@@ -68,20 +54,65 @@ class InfoCard extends React.Component {
 }
 
 // Creates a functional component for us
-export const Home = (props) => (
-  <React.Fragment>
+export class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+    };
+  }
+
+  componentDidMount() {
+    // TODO: comment what each of these lines does
+    fetch(`http://localhost:3001/api/questions`)
+      .then(response => response.json())
+      .then(responseJson => {
+        // Set state to contain all questions data and last page for paginator
+        this.setState({ data: responseJson.questions.data, lastPage: responseJson.questions.last_page });
+      });
+  }
+
+  handlePageClick = data => {
+    fetch(`http://localhost:3001/api/questions?page=${data.selected + 1}`)
+      .then(response => response.json())
+      .then(responseJson => {
+        // Set state to contain all questions data and last page for paginator
+        this.setState({ data: responseJson.questions.data, lastPage: responseJson.questions.last_page });
+      });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
 
         <div className={`${styles.infocardcontainer} col-sm-10`}>
           {/* Loops inside component and renders all InfoCards (answers, edits from following, etc) */}
-          <InfoCard></InfoCard>
+          <InfoCard data={ this.state.data }></InfoCard>
         </div>
 
         <div className="col-sm-2">
           <SideCard></SideCard>
         </div>
 
-  </React.Fragment>
-)
+        <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={this.state.pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+
+      </React.Fragment>
+    )
+  }
+}
 
 /*export default function Home() {
     return (
