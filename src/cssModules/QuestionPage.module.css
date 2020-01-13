@@ -1,0 +1,29 @@
+.leftcolcontainer {
+  margin-top: 5em;
+}
+
+.sidecard {
+  border: 2px solid #9FFFCB;
+  border-radius: 1%;
+  width: 15em;
+  height: 30em;
+  margin-top: 5em;
+  background-color: black;
+}
+
+.qpTitle {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 40px;
+  margin: 0 0 0 2em; /* t, r, b, l */
+  color: #9FFFCB;
+  border-bottom: 2px solid #9FFFCB; /* Creates bottom border underneath the title */
+}
+
+.qpBody {
+  font-size: 16px;
+  text-align: left;
+  margin: 2em 0 0 4em; /* t, r, b, l */
+  color: #9FFFCB;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import styles from './cssModules/Home.module.css'; // Need to put .module for CSS module files
+import { Link } from "react-router-dom";
 
 class SideCard extends React.Component {
   render() {
@@ -28,9 +28,17 @@ class InfoCard extends React.Component {
       data.map((q) => {
         return (
           <div className={ styles.infocard }>
-            <p className={ styles.infotitle }>
-              { q.title }
-            </p>
+            <Link to={{
+              pathname: '/questions/' + q.title,
+              state: {
+                questionTitle: q.title,
+                questionBody: q.body
+              }
+            }}>
+              <p className={ styles.infotitle }>
+                { q.title }
+              </p>
+            </Link>
             <div className={ styles.infotags }>
               <span className={ styles.tag }>Python</span>
               <span className={ styles.tag }>Django</span>

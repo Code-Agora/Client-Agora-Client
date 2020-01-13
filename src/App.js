@@ -7,6 +7,7 @@ import { MainSidebar } from './components/MainSidebar';
 import { Home } from './Home';
 import { NoMatch } from './NoMatch';
 import { TagsPage } from './TagsPage';
+import { QuestionPage } from './QuestionPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <div className="row">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/questions/:question" component={QuestionPage} />
               <Route path="/tags" component={TagsPage} />
               <Route component={NoMatch} />
             </Switch>

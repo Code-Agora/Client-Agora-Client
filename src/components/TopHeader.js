@@ -4,7 +4,7 @@ import styles from '../cssModules/TopHeader.module.css'; // Need to put .module 
 
 export const TopHeader = () => (
   <div className={ styles.header }>
-    <a href="" className={ styles.brand }>Code Agora</a>
+    <a href="/" className={ styles.brand }>Code Agora</a>
     <input type="text" placeholder="Search.." className={ styles.searchbar }></input>
   </div>
 )
