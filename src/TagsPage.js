@@ -1,8 +1,8 @@
 import React from 'react'
 
 // Creates a functional component for us
-export const NoMatch = () => (
+export const TagsPage = () => (
   <React.Fragment>
-    <h2>No Match</h2>
+  
   </React.Fragment>
 )

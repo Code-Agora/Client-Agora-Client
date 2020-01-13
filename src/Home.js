@@ -1,102 +1,73 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BottomNavbar } from './components/BottomNavbar';
-import { Card } from 'react-bootstrap'; // Notice not reactstrap
+import React, { Component } from 'react';
+import ReactPaginate from 'react-paginate';
+import styles from './cssModules/Home.module.css'; // Need to put .module for CSS module files
+import { Link } from "react-router-dom";
 
-/* Cards start on left side of cell in grid */
-const GridWrapper = styled.div`
-  margin-top: 1.5em;
-  margin-left: 6em;
-  margin-right: 6em; 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 2 columns, all equal in size */
-  grid-auto-rows: minmax(170px, auto);    /* rows are size of 100px minimum */
-  grid-gap: 20px;
-  width: 70%; /* Changes size of cells. Use background prop to see effect */
-  /* background: red; */
-`;
-
-const MyCard = styled(Card)`
-  width: 1fr; /* The width of one entire column */
-  border: 2px solid #9FFFCB;
-  background-color: #010010;
-  color: #9FFFCB;
-`;
-
-// This div contains 3 divs. Will be at very bottom of card. Will be full width of card
-const MainStatsRect = styled.div`
-  /*background: red;*/
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 50px;
-  text-align: center;
-  border-top: 1px solid #9FFFCB;
-  height: 30%;
-`;
-
-// Is a div inside of Card Body that holds all 3 stats (votes, answers, views)
-class Stats extends React.Component {
+class SideCard extends React.Component {
   render() {
     return (
-      <MainStatsRect>
-        <div> {/* div for the # of votes */}
-          0<br></br>Votes
-        </div>
-        <div> {/* div for the # of answers */}
-          0<br></br>Answers
-        </div>
-        <div> {/* div for the # of views */}
-          { this.props.vs }<br></br>Views
-        </div>
-      </MainStatsRect>
+      <div className={ styles.sidecard }>
+        
+      </div>
     );
   }
 }
 
-const Tag = styled.div`
-    background: #77B6EA;
-    color: #69626D;
-    border-radius: 5px;
-    color: white;
-    padding: 1px;
-    margin: 2px 2px 2px 2px;
-    letter-spacing: 1px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 12px;
-`;
+class InfoCard extends React.Component {
 
-const StyledTagBody = styled.div`
-  /*background: green;*/
-  position: absolute; /* Only way I could get in correct position..a lil hacky */
-  left: 70%; /* Moves TagBody to right side of MyCard */
-  width: 30%; /* 20% width of MyCard */
-  height: 70%; /* 70% height of MyCard (Lines up with stats rect) */
-  margin-right: 10px;
-`;
-
-class TagBody extends React.Component {
-  render() {
-    return (
-      <StyledTagBody>
-        {/* Loop through and display tags here */}
-        <Tag>python</Tag>
-        <Tag>java</Tag>
-        <Tag>react</Tag>
-        <Tag>css</Tag>
-      </StyledTagBody>
-    );
-  }
-}
-
-class Questions extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  render() {
+    const { data } = this.props;
+
+    return (
+
+      // Loop through questions data array
+      data.map((q) => {
+        return (
+          <div className={ styles.infocard }>
+            <Link to={{
+              pathname: '/questions/' + q.title,
+              state: {
+                questionTitle: q.title,
+                questionBody: q.body
+              }
+            }}>
+              <p className={ styles.infotitle }>
+                { q.title }
+              </p>
+            </Link>
+            <div className={ styles.infotags }>
+              <span className={ styles.tag }>Python</span>
+              <span className={ styles.tag }>Django</span>
+              <span className={ styles.tag }>Yaga Yeet</span>
+              <span className={ styles.tag }>Something</span>
+              <span className={ styles.tag }>A TAGGGG</span>
+            </div>
+            <p className={ styles.infouser }>asked 33 mins ago by CoderXxX</p>
+            <div className={ styles.mainstatsrect }>
+              <div className={ styles.stat_block }>0 <span>votes</span></div>
+              <div className={ styles.stat_block }>1 <span>answers</span></div>
+              <div className={ styles.stat_block }>{ q.view_count } <span>views</span></div>
+            </div>
+          </div>
+        )
+      }
+      )
+        
+    );
+  }
+}
+
+// Creates a functional component for us
+export class Home extends Component {
+  constructor(props) {
+    super(props);
+
     this.state = {
-      data: [], // data holds info on everything basically, question title, user, body, etc
-      //questions: require("./MOCK_DATA.json"), // Taking in entire array of questions data from JSON
-      activeSort: 'default', // On start, sort by default (all questions on site if no following)
-      options: ['default', 'popular', 'recent'],
+      data: [],
     };
   }
 
@@ -105,47 +76,51 @@ class Questions extends React.Component {
     fetch(`http://localhost:3001/api/questions`)
       .then(response => response.json())
       .then(responseJson => {
-        // Set state to contain all questions data
-        this.setState({ data: responseJson.data });
+        // Set state to contain all questions data and last page for paginator
+        this.setState({ data: responseJson.questions.data, lastPage: responseJson.questions.last_page });
       });
   }
 
-  // Render all of the questions based on information sent from backend
-  render() {
-    const { data } = this.state;
-    
-    return ( // <Questions> is returning multiple cards (having question data on them)
-      // Loop through questions data array
-      data.map((q) => {
-        return (
-          <MyCard key={q.id}>
-            <Card.Body style={{ width: "70%" }}>
-              <Card.Text>
-                { q.title }
-              </Card.Text>
-            </Card.Body>
-            <TagBody></TagBody>
-            <Stats vs={ q.view_count }></Stats> {/* Should be all 3 stats (votes, answers, views) */}
-          </MyCard>
-        )
-      }
+  handlePageClick = data => {
+    fetch(`http://localhost:3001/api/questions?page=${data.selected + 1}`)
+      .then(response => response.json())
+      .then(responseJson => {
+        // Set state to contain all questions data and last page for paginator
+        this.setState({ data: responseJson.questions.data, lastPage: responseJson.questions.last_page });
+      });
+  };
 
-      )
-    );
+  render() {
+    return (
+      <React.Fragment>
+
+        <div className={`${styles.infocardcontainer} col-sm-10`}>
+          {/* Loops inside component and renders all InfoCards (answers, edits from following, etc) */}
+          <InfoCard data={ this.state.data }></InfoCard>
+        </div>
+
+        <div className="col-sm-2">
+          <SideCard></SideCard>
+        </div>
+
+        <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={this.state.pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+
+      </React.Fragment>
+    )
   }
 }
-
-// Creates a functional component for us
-export const Home = (props) => (
-    <React.Fragment>
-      <BottomNavbar title="All Questions" />
-      <GridWrapper>
-
-        <Questions></Questions>
-
-      </GridWrapper>
-    </React.Fragment>
-)
 
 /*export default function Home() {
     return (

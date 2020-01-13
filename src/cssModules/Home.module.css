@@ -1,0 +1,73 @@
+.infocardcontainer {
+  margin-top: 5em;
+}
+
+.infocard {
+  position: relative;
+  border: 2px solid #9FFFCB;
+  border-radius: 1em;
+  width: 50em;
+  height: 10em;
+  /* Bottom 2 lines center div inside bootstrap column */
+  float: none;
+  margin: 0 0 0.5em 0; /* t, r, b, l */
+  background-color: black;
+  color: #9FFFCB;
+}
+
+.infotitle {
+  font-weight: bold;
+  font-size: large;
+  margin: 1.4em 10em 0 1em; /* t, r, b, l */
+  color: #9FFFCB;
+}
+
+.infotags {
+  position: relative;
+  left: 0; 
+  bottom: 0;
+  margin: 0 0 0 1.2em; /* t, r, b, l */
+  /*border-left: 2px solid #9FFFCB;
+  border-right: 2px solid #9FFFCB;*/
+  color: blue; /* Color of tags */
+  font-size: 14px;
+}
+
+.tag {
+  padding: 0 0 0 0;
+  margin: 0 1em 0 0; /* t, r, b, l */
+}
+
+.tag:hover {
+
+}
+
+.infouser {
+  padding: 0 0 0 0;
+  margin: 0 0 0 1.4em;
+  font-size: 12px;
+}
+
+.mainstatsrect {
+  position: absolute;
+  left: 85%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: left;
+  padding-top: 1.4em; /* Align top border of 3 stats with question title */
+  font-size: 25px;
+}
+
+.stat_block span {
+  font-size: 12px;
+}
+
+.sidecard {
+  border: 2px solid #9FFFCB;
+  border-radius: 1%;
+  width: 15em;
+  height: 30em;
+  margin-top: 5em;
+  background-color: black;
+}

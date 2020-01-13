@@ -1,0 +1,24 @@
+.sidebar {
+  position: fixed;
+  background-color: black;
+  margin-top: 58px;  /* Moves below TopHeader */
+  padding-top: 10px; /* Moves navitems down a lil bit */
+  overflow: hidden;
+  height: 100%;
+  width: 65px;
+}
+
+.navitem {
+  width: 65px;
+  text-align: center; /* Aligns <a> inside of NavIcon div */
+}
+
+.navitem a {
+  font-size: 2.7em;
+  color: #9FFFCB;
+}
+
+.navtext {
+  font-size: 0.25em;
+  margin-top: 2px; /* Separates text from icons a lil */
+}
